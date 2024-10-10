@@ -1,7 +1,5 @@
 package GeeksForGeeksLinkedListQuestions;
 
-import DoublyLinkedList.DoublyLinkedList.DNode;
-
 public class DoublyLinkedList {
 	protected Node head, tail;
 	protected int size;

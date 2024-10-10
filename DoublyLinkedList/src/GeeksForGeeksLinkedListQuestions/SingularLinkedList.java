@@ -1,5 +1,7 @@
 package GeeksForGeeksLinkedListQuestions;
 
+import GeeksForGeeksLinkedListQuestions.DoublyLinkedList.Node;
+
 public class SingularLinkedList {
 	
 
@@ -9,6 +11,7 @@ public class SingularLinkedList {
 	
 	public Node(int data) {
 		this.data = data;
+		this.next = null;
 	}
 
 	public int getData() {
@@ -32,7 +35,7 @@ public class SingularLinkedList {
 }
 
 	protected Node head;
-	protected long size;
+	protected int size;
 
 	public SingularLinkedList() {
 		this.head = null;
@@ -83,14 +86,26 @@ public class SingularLinkedList {
 		}
 		
 	}
-	public void removeLast() {
-		Node position = head;
-		for (int k=0; k<size-2; k++) {
-			position = position.getNext();
+	public void removeAfter(Node after) throws Exception {
+		Node pos = head;
+		if (head == null) {
+			throw new Exception("List is empty");
 		}
-		Node prevTail = position.getNext(); //must be defined before position.setNext(null)
-		position.setNext(null);
-		size--;
+		else {
+			while (pos != after && pos == null) {
+				pos = pos.getNext();
+			}
+			if(pos == null) {
+				throw new Exception("Node after does not exist in list.");
+			}
+			else {
+			// pos is after rn.  node1 node2 node3 node4(after) node5(deletingNode) node6 we want do remove node5
+			Node deletingNode = pos.getNext();
+			pos.setNext(deletingNode.getNext());
+			deletingNode.setNext(null); // To collection of garbage memory.
+			size--;
+			
+		}}
 	}
 	
 	public void remove(Node n) {
@@ -109,6 +124,16 @@ public class SingularLinkedList {
 		Node n = head;
 		head = head.getNext();
 		n.setNext(null);
+		size--;
+	}
+	
+	public void removeLast() {
+		Node position = head;
+		for (int k=0; k<size-2; k++) {
+			position = position.getNext();
+		}
+		Node prevTail = position.getNext(); //must be defined before position.setNext(null)
+		position.setNext(null);
 		size--;
 	}
 	
@@ -133,7 +158,44 @@ public class SingularLinkedList {
 		second.setNext(forth);
 
 	}
+	public int middleData() throws Exception {
+		if (head == null) {
+			throw new Exception("List is empty");
+		} else {
+			int middleIndex = size / 2 ;
+			Node pos = head;
+			
+			for (int i = 0; i < middleIndex; i++) {
+				pos = pos.getNext();
+			}
+			return pos.getData();
+
+		}
+
+	}
 	
+	public int occurenceRate(int data) {
+		if (head == null) {return 0;}
+		Node pos = head;
+		int count =0;
+		while (pos.getNext() != null) {
+			if (pos.getData() == data) {count++;}
+			pos = pos.getNext();
+		}
+		return count;
+	}
+	
+	public int[] returnAllData() {
+		Node pos = head;
+		int[] arrayOfData = new int[size];
+		for (int i = 0; i < size; i++) {
+			arrayOfData[i] = pos.getData();
+			pos = pos.getNext();
+		}
+		return arrayOfData;
+	}
+	
+
 	
 	
 

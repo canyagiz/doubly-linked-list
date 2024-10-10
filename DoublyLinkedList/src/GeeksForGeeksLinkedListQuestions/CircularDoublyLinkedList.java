@@ -1,9 +1,5 @@
 package GeeksForGeeksLinkedListQuestions;
 
-import java.util.LinkedList;
-
-import GeeksForGeeksLinkedListQuestions.DoublyLinkedList.Node;
-
 public class CircularDoublyLinkedList extends DoublyLinkedList {
 	public CircularDoublyLinkedList() {
 		super();
