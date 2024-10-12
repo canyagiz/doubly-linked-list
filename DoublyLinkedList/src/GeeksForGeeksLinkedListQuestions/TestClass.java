@@ -1,5 +1,9 @@
 package GeeksForGeeksLinkedListQuestions;
 
+import Stack_Queue.Node;
+import Stack_Queue.Queue;
+import Stack_Queue.Stack;
+
 public class TestClass {
 	public static void main(String[] args) throws Exception {
 
@@ -11,17 +15,17 @@ public class TestClass {
 		SingularLinkedList.Node n4_s = s_list.new Node(4);
 		SingularLinkedList.Node n5_s = s_list.new Node(5);
 		SingularLinkedList.Node n6_s = s_list.new Node(6);
-		SingularLinkedList.Node n7_s = s_list.new Node(3);
+		SingularLinkedList.Node n7_s = s_list.new Node(7);
 
 		s_list.addFirst(n1_s);
 		s_list.addAfter(n1_s, n2_s);
 		s_list.addAfter(n2_s, n3_s);
 		s_list.addAfter(n3_s, n4_s);
 		s_list.addAfter(n4_s, n5_s);
-		s_list.addAfter(n5_s, n7_s);
-		s_list.addLast(n6_s);
-		
-		for (int data : s_list.returnAllData()) {
+		s_list.addAfter(n5_s, n6_s);
+		s_list.addLast(n7_s);
+
+		for (Object data : s_list.returnAllData()) {
 			System.out.print(data + " | ");
 		}
 		System.out.println();
@@ -32,9 +36,20 @@ public class TestClass {
 		System.out.println("occurance rate of " + testValue + " is: " + s_list.occurenceRate(testValue));
 
 		System.out.println();
-
-		System.out.println("######################### Doubly Linked List ########################");
-
+		
+		System.out.println("List is gonna be reversed, list before reversed \n");
+		for (Object data : s_list.returnAllData()) {
+			System.out.print(data + " | ");
+		}
+		System.out.println("\nList after reversed:\n");
+		s_list.reverseLinkedList();
+		for (Object data : s_list.returnAllData()) {
+			System.out.print(data + " | ");
+		}
+		
+		System.out.println();
+		System.out.println("\n######################### Doubly Linked List ########################");
+		System.out.println();
 		DoublyLinkedList list = new DoublyLinkedList();
 		DoublyLinkedList.Node n1 = list.new Node(1);
 		DoublyLinkedList.Node n2 = list.new Node(2);
@@ -108,9 +123,43 @@ public class TestClass {
 
 		System.out.println("Is node" + testNodeClist.getData() + " in there: " + clist.isNodeThere(testNodeClist));
 		System.out.println("Is node" + testNodeClist2.getData() + " in there: " + clist.isNodeThere(testNodeClist2));
+		
+		System.out.println("\n############### STACK ####################\n");
 
+		try {
+			Stack<Integer> intStack = new Stack<>();
+			intStack.push(new Node<>(1));
+			intStack.push(new Node<>(2));
+			intStack.push(new Node<>(3));
+			System.out.println("Kuyruktan çıkarılan: " + intStack.pop().getItem()); // 1
+			System.out.println("Kuyruktan çıkarılan: " + intStack.pop().getItem()); // 2
+			System.out.println("Kuyruktan çıkarılan: " + intStack.pop().getItem()); // 3
+
+		}catch(Exception e) {
+			System.out.println("Hata: " + e.getMessage());
+		}
 		
-		
+		System.out.println("\n############### QUEUE ####################\n");
+
+		try {
+            Queue<Integer> intQueue = new Queue<>();
+            intQueue.enqueue(new Node<>(1));
+            intQueue.enqueue(new Node<>(2));
+            intQueue.enqueue(new Node<>(3));
+            System.out.println("Kuyruktan çıkarılan: " + intQueue.dequeue()); // 1
+            System.out.println("Kuyruktan çıkarılan: " + intQueue.dequeue()); // 2
+            System.out.println("Kuyruktan çıkarılan: " + intQueue.dequeue()); // 3
+
+            Queue<String> stringQueue = new Queue<>();
+            stringQueue.enqueue(new Node<>("Hello"));
+            stringQueue.enqueue(new Node<>("World"));
+            System.out.println("Kuyruktan çıkarılan: " + stringQueue.dequeue()); // Hello
+            System.out.println("Kuyruktan çıkarılan: " + stringQueue.dequeue()); // World
+
+        } catch (Exception e) {
+            System.out.println("Hata: " + e.getMessage());
+        }
+
 	}
 
 }

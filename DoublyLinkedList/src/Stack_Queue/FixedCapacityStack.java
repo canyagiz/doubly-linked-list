@@ -1,4 +1,4 @@
-package Stack.Queue;
+package Stack_Queue;
 
 public class FixedCapacityStack extends Stack {
 	protected int capacity;

@@ -1,9 +1,9 @@
-package Stack.Queue;
+package Stack_Queue;
 
 
 public class FixedStacksWithArrays {
 	private String[] s;
-	private int N = 0; // count of element in stack
+	private int size = 0; // count of element in stack
 	private int capacity;
 
 	public FixedStacksWithArrays(int capacity) {
@@ -39,33 +39,33 @@ public class FixedStacksWithArrays {
 	}
 
 	public boolean isEmpty() {
-		return N == 0;
+		return size == 0;
 	}
 
 	public void push(String item) {
-        if (N == s.length) {
+        if (size == s.length) {
             resize(2 * s.length);
         }
-        s[N++] = item; // S[N] = item; N++;
+        s[size++] = item; // S[N] = item; N++;
     }
 
 	public String pop() throws Exception {
-		if (N == 0) {
+		if (size == 0) {
 			throw new Exception("No element to pop!");
 		} 
 		else {
-			if(N == s.length / 4) {
+			if(size == s.length / 4) {
 				resize(s.length/2);
 			}
-			String item = s[N]; // 0 1 2 3 4 5 6 7 8 (pop 9) N=10 s[10] = 9 = item
-			s[N--] = null; // s[9] = 8 , N = N-1
+			String item = s[--size]; // 0 1 2 3 4 5 6 7 8 (pop 9) size=10 s[10] = 9 = item
+			s[size] = null; // s[9] = 8 , N = N-1
 			return item;
 		}
 
 	}
 	public void resize(int newCapacity) {
 		String[] copy = new String[newCapacity];
-		for (int i =0; i<N; i++) {
+		for (int i =0; i<size; i++) {
 			copy[i] = s[i];
 		}
 		this.capacity = newCapacity;

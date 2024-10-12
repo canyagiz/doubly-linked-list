@@ -1,8 +1,8 @@
-package Stack.Queue;
+package Stack_Queue;
 
 //Both head and tail are storing since dequeing is from head, queing is from tail.
-public class Queue {
-	protected Node back, end;
+public class Queue<T> {
+	protected Node<T> back, end;
 	protected int size;
 
 	public Queue() {
@@ -11,7 +11,7 @@ public class Queue {
 		end = null;
 	}
 
-	public void enqueue(Node n) {
+	public void enqueue(Node<T> n) {
 		if (end == null) {
 			back = n;
 			end = n;
@@ -23,19 +23,23 @@ public class Queue {
 		}
 	}
 
-	public void dequeue() throws Exception {
+	public T dequeue() throws Exception {
 		if (back == null) {
 			throw new Exception("Queue is empty!");
 		}
 		if(back == end) {
+			Node<T> n = back;
 			back =null;
 			end = null;
 			size--;
+			return n.getItem();
 		}
 
 		else {
+			Node<T> n = back;
 			back = back.getNext();
 			size--;
+			return n.getItem();
 			
 		}
 

@@ -1,9 +1,9 @@
-package Stack.Queue;
+package Stack_Queue;
 
 
-public class Stack {
+public class Stack<T> {
 	
-	protected Node top;
+	protected Node<T> top;
 	protected int size;
 	
 	public Stack() {
@@ -15,21 +15,21 @@ public class Stack {
 		return top == null;
 	}
 	
-	public void push(Node n) throws Exception {
+	public void push(Node<T> n) throws Exception {
 		if (top == null) {
 			top = n;
 			size++;
 		}else {
-		Node pos = top;
+		Node<T> pos = top;
 		n.setNext(top);
 		top = n;
 		size++;}
 		
 	}
-	public Node pop() throws Exception {
+	public Node<T> pop() throws Exception {
 		if(size != 0) {
-			Node pos = top;
-			Node newHead = pos.getNext();
+			Node<T> pos = top;
+			Node<T> newHead = pos.getNext();
 			top = newHead;
 			pos.setNext(null); // to garbage collecter
 			size--;
@@ -41,11 +41,11 @@ public class Stack {
 		
 	}
 	
-	public String[] returnAllData() {
-		Node pos = top;
-		String[] arrayOfData = new String[size];
+	public T[] returnAllData() {
+		Node<T> pos = top;
+		T[] arrayOfData = (T[]) new Object[size];
 		for (int i = 0; i < size; i++) {
-			arrayOfData[i] = pos.getItem();
+			arrayOfData[i] =  (T) pos.getItem();
 			pos = pos.getNext();
 		}
 		return arrayOfData;

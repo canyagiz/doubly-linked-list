@@ -1,4 +1,4 @@
-package Stack.Queue;
+package Stack_Queue;
 
 public class TestClass {
 	public static void main(String[] args) throws Exception {
@@ -18,14 +18,14 @@ public class TestClass {
 			stack.push(n4);
 			stack.push(n5);
 
-			for (String data : stack.returnAllData()) {
+			for (Object data : stack.returnAllData()) {
 				System.out.print(data + " | ");
 			}
 			System.out.println();
 
 			System.out.println("Popped item: " + stack.pop().getItem());
 
-			for (String data : stack.returnAllData()) {
+			for (Object data : stack.returnAllData()) {
 				System.out.print(data + " | ");
 			}
 			System.out.println();

@@ -1,10 +1,10 @@
-package Stack.Queue;
+package Stack_Queue;
 
-public class Node{
+public class Node<T>{
 	protected Node next;
-	protected String item;
+	protected T item;
 	
-	public Node(String item) {
+	public Node(T item) {
 		this.next = null;
 		this.item = item;
 	}
@@ -13,7 +13,7 @@ public class Node{
 		return next;
 	}
 
-	public String getItem() {
+	public T getItem() {
 		return item;
 	}
 
@@ -21,7 +21,7 @@ public class Node{
 		this.next = next;
 	}
 
-	public void setItem(String item) {
+	public void setItem(T item) {
 		this.item = item;
 	}
 	
